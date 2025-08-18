@@ -1,0 +1,74 @@
+{
+	"productos": [
+		{
+			"id": 1,
+			"nombre": "Lampara",
+			"descripcion": "Lampara de pie moderna con luz LED.",
+			"precio": 89.99,
+			"stock": 20,
+			"categoria": "Iluminación",
+			"imagen": "lampara_pie.jpg"
+		},
+		{
+			"id": 2,
+			"nombre": "Tapete de piedra",
+			"descripcion": "Tapete decorativo de piedra natural, para baño o cocina.",
+			"precio": 299.99,
+			"stock": 5,
+			"categoria": "Baño",
+			"imagen": "tapete_piedra.jpg"
+		},
+		{
+			"id": 3,
+			"nombre": "Alfombra decorativa",
+			"descripcion": "Alfombra suave de 2x3 metros, color beige.",
+			"precio": 59.99,
+			"stock": 15,
+			"categoria": "Decoración",
+			"imagen": "alfombra.jpg"
+		},
+		{
+			"id": 5,
+			"nombre": "Soporte para telefono para ducha",
+			"descripcion": "Soporte para teléfono móvil resistente al agua, ideal para la ducha.",
+			"precio": 19.99,
+			"stock": 50,
+			"categoria": "Baño",
+			"imagen": "soporte_telefono_ducha.jpg"
+		},
+        {
+            "id": 6,
+            "nombre": "Termo",
+            "descripcion": "Termo de acero inoxidable, ideal para bebidas calientes.",
+            "precio": 24.99,
+            "stock": 30,
+            "categoria": "Baño",
+            "imagen": "termo.jpg"
+        },
+        {
+            "id": 7,
+            "nombre": "Espejo de pared",
+            "descripcion": "Espejo decorativo de pared con marco elegante.",
+            "precio": 49.99,
+            "stock": 10,
+            "categoria": "Decoración",
+            "imagen": "espejo_pared.jpg"
+        },{
+            "id": 8,
+            "nombre": "Extensor de grifo de cocina",
+            "descripcion": "Extensor de grifo para facilitar el acceso al agua en la cocina.",
+            "precio": 39.99,
+            "stock": 15,
+            "categoria": "Cocina",
+            "imagen": "extensor_grifo_cocina.jpg"
+        },{
+            "id": 9,
+            "nombre": "Organizador de baño",
+            "descripcion": "Organizador de baño de 3 niveles, ideal para ahorrar espacio.",
+            "precio": 29.99,
+            "stock": 10,
+            "categoria": "Baño",
+            "imagen": "organizador_bano.jpg"
+        }
+	]
+}
