@@ -1,13 +1,16 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kora</title>
     <link rel="stylesheet" href="style.css">
-    <title>E-Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="menu-arriba">
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Kora</h1>
             <div class="contact">
                 <p>fullstack@utadeo.edu.co</p>
                 <p>(12345)67890</p>
@@ -18,41 +21,59 @@
                 <p>Mi lista</p>
             </div>
         </div>
-        <div class="menu-abajo">
-            <div class="logo">KORA</div>
-            <nav>
-                <p>Inicio</p>
-                <p>Categorias</p>
-                <p>Descuentas</p>
-                <p>Contactanos</p>
-                <div class="search-bar">
-                    <input type="text" name="" id="" placeholder="">
-                    <button></button>
-                </div>
-            </nav>
-        </div>
     </header>
-    <main>
-        <div class="banner"></div>
-        <h1>Productos destacados</h1>
-        <div class="product-line">
-            <div class="product"></div>
-            <div class="product"></div>
-            <div class="product"></div>
-            <div class="product"></div>
+
+    <section class="hero">
+        <div class="container">
+            <h2 class="hero-title">Productos para tu hogar</h2>
+            <p class="hero-subtitle">Catálogo de productos disponibles</p>
         </div>
-        <div class="product-line">
-            <div class="product"></div>
-            <div class="product"></div>
-            <div class="product"></div>
-            <div class="product"></div>
-        </div>
-        <div class="product-line">
-            <div class="product"></div>
-            <div class="product"></div>
-            <div class="product"></div>
-            <div class="product"></div>
+    </section>
+
+    <main class="main">
+        <div class="container">
+            <div class="products-grid" id="products-container">
+            </div>
         </div>
     </main>
+
+    <script>
+        fetch('./bd.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('products-container');
+                
+                const iconos = {
+                    "Iluminación": "💡",
+                    "Baño": "🚿", 
+                    "Decoración": "🖼️",
+                    "Cocina": "🍳"
+                };
+                
+                data.productos.forEach(producto => {
+                    const productoHTML = `
+                        <div class="product-card">
+                            <div class="product-image">${iconos[producto.categoria] || '📦'}</div>
+                            <div class="product-category">${producto.categoria}</div>
+                            <div class="product-info">
+                                <h3 class="product-name">${producto.nombre}</h3>
+                                <p class="product-description">${producto.descripcion}</p>
+                                <div class="product-details">
+                                    <span class="product-price">$${producto.precio}</span>
+                                    <span class="product-stock">${producto.stock} disponibles</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += productoHTML;
+                });
+            })
+            .catch(error => {
+                console.error('Error cargando productos:', error);
+                document.getElementById('products-container').innerHTML = 
+                    '<p style="text-align: center; color: #666;">Error cargando productos</p>';
+            });
+    </script>
+
 </body>
 </html>
