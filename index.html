@@ -1,12 +1,76 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style></style>
-    <title>E-Commerce</title>
+    <title>Kora</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Bienvenido a la tienda en línea</h1>
-    <p>Explora nuestros productos.</p>
+    <!-- Header Simple -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Kora</h1>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h2 class="hero-title">Productos para tu hogar</h2>
+            <p class="hero-subtitle">Catálogo de productos disponibles</p>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <main class="main">
+        <div class="container">
+            <div class="products-grid" id="products-container">
+                <!-- Los productos se cargarán desde bd.json -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Cargar productos desde bd.json
+        fetch('./bd.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('products-container');
+                
+                // Iconos para cada categoría
+                const iconos = {
+                    "Iluminación": "💡",
+                    "Baño": "🚿", 
+                    "Decoración": "🖼️",
+                    "Cocina": "🍳"
+                };
+                
+                data.productos.forEach(producto => {
+                    const productoHTML = `
+                        <div class="product-card">
+                            <div class="product-image">${iconos[producto.categoria] || '📦'}</div>
+                            <div class="product-category">${producto.categoria}</div>
+                            <div class="product-info">
+                                <h3 class="product-name">${producto.nombre}</h3>
+                                <p class="product-description">${producto.descripcion}</p>
+                                <div class="product-details">
+                                    <span class="product-price">$${producto.precio}</span>
+                                    <span class="product-stock">${producto.stock} disponibles</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += productoHTML;
+                });
+            })
+            .catch(error => {
+                console.error('Error cargando productos:', error);
+                document.getElementById('products-container').innerHTML = 
+                    '<p style="text-align: center; color: #666;">Error cargando productos</p>';
+            });
+    </script>
+
 </body>
 </html>
