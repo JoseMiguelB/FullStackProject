@@ -8,14 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header Simple -->
     <header class="header">
         <div class="container">
             <h1 class="logo">Kora</h1>
+            <div class="contact">
+                <p>fullstack@utadeo.edu.co</p>
+                <p>(12345)67890</p>
+            </div>
+            <div class="custome">
+                <p>COP</p>
+                <p>Login</p>
+                <p>Mi lista</p>
+            </div>
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <h2 class="hero-title">Productos para tu hogar</h2>
@@ -23,23 +30,19 @@
         </div>
     </section>
 
-    <!-- Productos -->
     <main class="main">
         <div class="container">
             <div class="products-grid" id="products-container">
-                <!-- Los productos se cargarán desde bd.json -->
             </div>
         </div>
     </main>
 
     <script>
-        // Cargar productos desde bd.json
         fetch('./bd.json')
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('products-container');
                 
-                // Iconos para cada categoría
                 const iconos = {
                     "Iluminación": "💡",
                     "Baño": "🚿", 
